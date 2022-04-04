@@ -10,26 +10,22 @@
   '((listen-address "127.0.0.1"))
   "The default configuration.")
 
-(def system-object (name)
+(def sys-object (name)
   "Return the system object for the current system."
   (asdf:find-system name))
 
-(def asdf-path (system)
+(def sys-path (system)
   "Return the ASDF file path for the current system."
   (uiop:merge-pathnames* (cat system ".asd")
-                         (asdf:system-source-directory (system-object system))))
+                         (asdf:system-source-directory (sys-object system))))
 
-(def read-asdf-path (system)
+(def read-sys-path (system)
   "Return the system ASDF file as s-expressions."
-  (uiop:read-file-forms (asdf-path system)))
+  (uiop:read-file-forms (sys-path system)))
 
-(def system-version (name)
+(def sys-version (name)
   "Return the version number extracted from the system resources."
-  (let* ((system (system-object name))
-         (asdf-base-name (cat name ".asd"))
-         (source-directory (asdf:system-source-directory system))
-         (forms (read-asdf-path system)))
-    (getf (assoc 'defsystem forms :test #'equal) :version)))
+  (asdf:system-version (sys-object name)))
 
 (def config-directory (name)
   "Return the path to the default configuration and storage directory."
