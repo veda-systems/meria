@@ -3,7 +3,9 @@
 (uiop:define-package :pierre/driver
   (:nicknames :pierre)
   (:use :uiop/common-lisp)
-  (:use-reexport #:pierre/config
+  (:use-reexport #:pierre/specials
+                 #:pierre/common
+                 #:pierre/config
                  #:pierre/server))
 
 (provide "pierre")
