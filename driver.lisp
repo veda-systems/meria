@@ -6,7 +6,8 @@
   (:use-reexport #:pierre/specials
                  #:pierre/common
                  #:pierre/config
-                 #:pierre/server))
+                 #:pierre/server
+                 #:pierre/threads))
 
 (provide "pierre")
 (provide "PIERRE")
