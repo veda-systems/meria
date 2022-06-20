@@ -7,7 +7,7 @@
 (in-package #:pierre/config)
 
 (defvar *default-config*
-  '((listen-address "127.0.0.1"))
+  '((:listen-address "127.0.0.1"))
   "The default configuration.")
 
 (def sys-object (name)
@@ -42,7 +42,8 @@
 
 (def read-config-file (name)
   "Read the configuration file."
-  (uiop:read-file-forms (config-file name)))
+  (uiop:with-safe-io-syntax ()
+    (uiop:read-file-forms (config-file name))))
 
 (def read-config (name)
   "Return the most proximate configuration."
