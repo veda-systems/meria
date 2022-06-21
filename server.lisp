@@ -8,8 +8,8 @@
 
 (in-package #:pierre/server)
 
-(def clack-start (name port address)
-  "Start the clack server SERVER under port PORT."
+(def start-httpd (name port address)
+  "Start the HTTP server under port PORT."
   (let* ((server :hunchentoot)
          (value (clack:clackup name :server server :address address :port port :silent t)))
     (when value
@@ -17,8 +17,6 @@
       (debug-print (fmt "Listening on ~A:~A." address port))
       value)))
 
-(def clack-stop (server)
-  "Stop the clack server SERVER."
+(def stop-httpd (server)
+  "Stop the HTTP SERVER."
   (clack:stop server))
-
-
