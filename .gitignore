@@ -1,0 +1,6 @@
+# ignore files
+
+*.*fas*
+
+*~
+.DS_Store
