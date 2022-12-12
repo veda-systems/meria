@@ -1,10 +1,10 @@
 ;;;; server.lisp
 
 (uiop:define-package #:pierre/server
-    (:use #:cl
-          #:marie
-          #:pierre/specials
-          #:pierre/common))
+  (:use #:cl
+        #:marie
+        #:pierre/specials
+        #:pierre/common))
 
 (in-package #:pierre/server)
 

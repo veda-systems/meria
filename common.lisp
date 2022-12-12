@@ -1,9 +1,9 @@
 ;;;; common.lisp
 
 (uiop:define-package #:pierre/common
-    (:use #:cl
-          #:marie
-          #:pierre/specials))
+  (:use #:cl
+        #:marie
+        #:pierre/specials))
 
 (in-package #:pierre/common)
 
