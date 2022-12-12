@@ -1,8 +1,8 @@
 ;;;; specials.lisp
 
 (uiop:define-package #:pierre/specials
-    (:use #:cl
-          #:marie))
+  (:use #:cl
+        #:marie))
 
 (in-package #:pierre/specials)
 
