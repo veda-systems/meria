@@ -29,7 +29,14 @@
 
 (def config-directory (name)
   "Return the path to the default configuration and storage directory."
-  (~ (cat #\. name #\/)))
+  (let ((base (uiop:merge-pathnames* (make-pathname :directory '(:relative ".config"))
+                                     (user-homedir-pathname))))
+    (flet ((fn (name base)
+               (uiop:merge-pathnames* (make-pathname :directory `(:relative ,name))
+                                      base)))
+      (uiop:os-cond
+       ((uiop:os-unix-p) (fn name base))
+       (t (error "Oops, this function does not work on your system."))))))
 
 (def config-file (name)
   "Return the location of the config file of NAME on the disk"
