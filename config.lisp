@@ -1,4 +1,5 @@
-;;;; config.lisp
+;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
+;;;; config.lisp: configuration management
 
 (uiop:define-package #:pierre/config
   (:use #:cl

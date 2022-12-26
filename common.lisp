@@ -1,9 +1,9 @@
-;;;; common.lisp
+;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
+;;;; common.lisp: common utilities
 
 (uiop:define-package #:pierre/common
   (:use #:cl
-        #:marie
-        #:pierre/specials))
+        #:marie))
 
 (in-package #:pierre/common)
 
@@ -20,6 +20,10 @@
              (:hour 2) (:min 2) (:sec 2)
              #\.
              (:usec 6) :gmt-offset-hhmm)))
+
+(defv *debug-print*
+  t
+  "Whether to print debugging information using a dedicated outputter.")
 
 (def debug-print (text &optional (stream *standard-output*))
   "Display TEXT to STREAM prefixing it with the the current date and time."

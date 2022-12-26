@@ -1,9 +1,9 @@
-;;;; server.lisp
+;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
+;;;; server.lisp: server management
 
 (uiop:define-package #:pierre/server
   (:use #:cl
         #:marie
-        #:pierre/specials
         #:pierre/common))
 
 (in-package #:pierre/server)
