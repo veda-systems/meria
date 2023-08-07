@@ -7,26 +7,49 @@
 
 (in-package #:pierre/config)
 
-(defvar *default-config*
-  '((:listen-address "127.0.0.1"))
-  "The default configuration.")
+
+;;; systems
 
-(def sys-object (name)
+(def system-object^sys-object (name)
   "Return the system object for the current system."
   (asdf:find-system name))
 
-(def sys-path (system)
+(def system-path^sys-path (system)
   "Return the ASDF file path for the current system."
-  (uiop:merge-pathnames* (cat system ".asd")
-                         (asdf:system-source-directory (sys-object system))))
+  (let ((object (system-object system)))
+    (uiop:merge-pathnames* (cat system ".asd")
+                           (asdf:system-source-directory object))))
 
-(def read-sys-path (system)
+(def read-system-path^read-sys-path (system)
   "Return the system ASDF file as s-expressions."
   (uiop:read-file-forms (sys-path system)))
 
-(def sys-version (name)
+(def system-version^sys-version (name)
   "Return the version number extracted from the system resources."
   (asdf:system-version (sys-object name)))
+
+(def driver-path (system &optional (name "driver"))
+  "Return the driver file of SYSTEM."
+  (let* ((directory (asdf:system-source-directory system))
+         (driver (make-pathname :directory '(:relative "src") :name name)))
+    (uiop:merge-pathnames* driver directory)))
+
+(def reload-driver^rl (system)
+  "Reload the driver file of SYSTEM."
+  (let* ((path (driver-path system)))
+    (load path)))
+
+(defm @ (system)
+    "Reload SYSTEM using symbol name."
+  `(let* ((base (prin1-to-string ',system))
+          (string (string-downcase base))
+          (*standard-output* (make-broadcast-stream)))
+     (mute
+       (reload-driver string)
+       (values))))
+
+
+;;; config files
 
 (def config-directory (name)
   "Return the path to the default configuration and storage directory."
@@ -52,6 +75,10 @@
   "Read the configuration file."
   (uiop:with-safe-io-syntax ()
     (uiop:read-file-forms (config-file name))))
+
+(defv- *default-config*
+  '((:listen-address "127.0.0.1"))
+  "The default configuration.")
 
 (def read-config (name)
   "Return the most proximate configuration."
