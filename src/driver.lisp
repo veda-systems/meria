@@ -8,7 +8,8 @@
                  #:pierre/config
                  #:pierre/server
                  #:pierre/threads
-                 #:pierre/os))
+                 #:pierre/os
+                 #:pierre/utils))
 
 (provide "pierre")
 (provide "PIERRE")
