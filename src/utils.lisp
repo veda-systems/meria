@@ -9,9 +9,13 @@
 
 (def notify (message)
   "Display a system notification."
-  (uiop:launch-program (format nil "terminal-notifier -sound default -message '~A'" message)))
+  (uiop:launch-program
+   #+linux
+   (format nil "notify-send -i gtk-dialog-info '~A'" message)
+   #+macosx
+   (format nil "terminal-notifier -sound default -message '~A'" message)))
 
 (defm tnotify (&rest args)
-  "Time the evaluation of ARGS then send a notification."
+  "Time the evaluation of ARGS then dispaly a notification after it has finished the evaluation."
   `(time (progn ,@args
                 (notify "Evaluation has finished."))))
