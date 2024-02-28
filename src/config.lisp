@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; config.lisp: configuration management
 
-(uiop:define-package #:pierre/config
+(uiop:define-package #:pierre/src/config
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/config)
+(in-package #:pierre/src/config)
 
 
 ;;; systems
@@ -45,7 +45,7 @@
     (load path)))
 
 (defm @ (system)
-    "Reload SYSTEM using symbol name."
+  "Reload SYSTEM using symbol name."
   `(let* ((base (prin1-to-string ',system))
           (string (string-downcase base))
           (*standard-output* (make-broadcast-stream)))

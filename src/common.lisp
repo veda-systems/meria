@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; common.lisp: common utilities
 
-(uiop:define-package #:pierre/common
+(uiop:define-package #:pierre/src/common
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/common)
+(in-package #:pierre/src/common)
 
 (def current-iso-8601-date ()
   "Return the current date and time in ISO 8601 format."
@@ -29,4 +29,10 @@
   "Display TEXT to STREAM prefixing it with the the current date and time."
   (when *debug-print*
     (format stream "[~A] ~A~%" (current-custom-date) text)
+    (force-output stream)))
+
+(def debug-print* (text &optional (stream *standard-output*))
+  "Like DEBUG-PRINT sans the newline."
+  (when *debug-print*
+    (format stream "[~A] ~A" (current-custom-date) text)
     (force-output stream)))

@@ -1,12 +1,12 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; server.lisp: server management
 
-(uiop:define-package #:pierre/server
+(uiop:define-package #:pierre/src/server
   (:use #:cl
         #:marie
-        #:pierre/common))
+        #:pierre/src/common))
 
-(in-package #:pierre/server)
+(in-package #:pierre/src/server)
 
 (def start-httpd (name port address)
   "Start the HTTP server under port PORT."

@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; threads.lisp: utilities for dealing with threads
 
-(uiop:define-package #:pierre/threads
-    (:use #:cl
-          #:marie))
+(uiop:define-package #:pierre/src/threads
+  (:use #:cl
+        #:marie))
 
-(in-package #:pierre/threads)
+(in-package #:pierre/src/threads)
 
 (def show-threads ()
   "Print a list of running threads."

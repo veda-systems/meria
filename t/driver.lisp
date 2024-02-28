@@ -2,7 +2,7 @@
 ;;;; driver.lisp: top-level definitions for the tests
 
 (uiop:define-package #:pierre/t/driver
-    (:nicknames #:marie/t)
+  (:nicknames #:pierre-t)
   (:use #:uiop/common-lisp
         #:marie)
   (:use-reexport #:pierre/t/run))

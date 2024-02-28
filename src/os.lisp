@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; os.lisp: useful utilities using the operating system
 
-(uiop:define-package #:pierre/os
+(uiop:define-package #:pierre/src/os
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/os)
+(in-package #:pierre/src/os)
 
 
 #+linux
@@ -13,7 +13,7 @@
   (defconstant +sc-nprocessors-onln+ 84)
 
   (fli:define-foreign-function (sysconf% "sysconf")
-    ((name :int))
+      ((name :int))
     :result-type :long)
 
   (defun number-of-processors% ()
@@ -27,12 +27,12 @@
   ;; sysctl(int *name, u_int namelen, void *oldp, size_t *oldlenp, void *newp,
   ;;        size_t newlen);
   (fli:define-foreign-function (sysctl% "sysctl")
-    ((name    :pointer)
-     (namelen :unsigned-int)
-     (oldp    :pointer)
-     (oldlenp :pointer)
-     (newp    :pointer)
-     (newlen  :unsigned-int))
+      ((name    :pointer)
+       (namelen :unsigned-int)
+       (oldp    :pointer)
+       (oldlenp :pointer)
+       (newp    :pointer)
+       (newlen  :unsigned-int))
     :result-type :long)
 
   (defun number-of-processors% ()
@@ -77,15 +77,15 @@
   (fli:define-c-typedef word :unsigned-short)
 
   (fli:define-c-struct processor-struct
-    (processor-architecture word)
+      (processor-architecture word)
     (reserved word))
 
   (fli:define-c-union oem-union
-    (oem-ide dword)
+      (oem-ide dword)
     (processor-struct (:struct processor-struct)))
 
   (fli:define-c-struct system-info
-    (oem-info (:union oem-union))
+      (oem-info (:union oem-union))
     (page-size dword)
     (minimum-application-address :pointer)
     (maximum-application-address :pointer)
@@ -101,7 +101,7 @@
   ;;   _Out_ LPSYSTEM_INFO lpSystemInfo
   ;; );
   (fli:define-foreign-function (get-system-info% "GetSystemInfo")
-    ((data (:pointer (:struct system-info))))
+      ((data (:pointer (:struct system-info))))
     :result-type :void
     :module 'kernel32-library)
 
