@@ -44,7 +44,7 @@
   (let* ((path (driver-path system)))
     (load path)))
 
-(defm @ (system)
+(defm ! (system)
   "Reload SYSTEM using symbol name."
   `(let* ((base (prin1-to-string ',system))
           (string (string-downcase base))
