@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; utils.lisp: useful utilities using the operating system
 
-(uiop:define-package #:pierre/src/utils
+(uiop:define-package #:meria/src/utils
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/src/utils)
+(in-package #:meria/src/utils)
 
 (def notify (message)
   "Display a system notification."
@@ -19,3 +19,8 @@
   "Time the evaluation of ARGS then dispaly a notification after it has finished the evaluation."
   `(time (progn ,@args
                 (notify "Evaluation has finished."))))
+
+(def slots (object)
+  "Return the slot names of OBJECT."
+  (mapcar #'hcl:slot-definition-name
+          (hcl:class-direct-slots (class-of object))))

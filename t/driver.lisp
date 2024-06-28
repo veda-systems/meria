@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; driver.lisp: top-level definitions for the tests
 
-(uiop:define-package #:pierre/t/driver
-  (:nicknames #:pierre-t)
+(uiop:define-package #:meria/t/driver
+  (:nicknames #:meria-t)
   (:use #:uiop/common-lisp
         #:marie)
-  (:use-reexport #:pierre/t/run))
+  (:use-reexport #:meria/t/run))
 
-(provide "pierre/t")
-(provide "PIERRE/T")
+(provide "meria/t")
+(provide "MERIA/T")

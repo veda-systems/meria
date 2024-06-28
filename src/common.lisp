@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; common.lisp: common utilities
 
-(uiop:define-package #:pierre/src/common
+(uiop:define-package #:meria/src/common
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/src/common)
+(in-package #:meria/src/common)
 
 (def current-iso-8601-date ()
   "Return the current date and time in ISO 8601 format."

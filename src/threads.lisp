@@ -1,11 +1,11 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
 ;;;; threads.lisp: utilities for dealing with threads
 
-(uiop:define-package #:pierre/src/threads
+(uiop:define-package #:meria/src/threads
   (:use #:cl
         #:marie))
 
-(in-package #:pierre/src/threads)
+(in-package #:meria/src/threads)
 
 (def show-threads ()
   "Print a list of running threads."
@@ -19,7 +19,7 @@
 
 (def find-threads (query)
   "Find threads matching QUERY."
-  (remove-if-not (λ (thread)
+  (remove-if-not (lambda (thread)
                    (string= query (mp:process-name thread)))
                  (mp:list-all-processes)))
 
@@ -31,5 +31,5 @@
 (def destroy-other-threads (query)
   "Destroy threads not matching QUERY."
   (loop :for thread :in (mp:list-all-processes)
-        :when (¬ (string= query (mp:process-name thread)))
+        :when (neg (string= query (mp:process-name thread)))
           :do (mp:process-kill thread)))
