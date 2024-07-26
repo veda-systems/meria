@@ -22,5 +22,5 @@
 
 (def slots (object)
   "Return the slot names of OBJECT."
-  (mapcar #'hcl:slot-definition-name
-          (hcl:class-direct-slots (class-of object))))
+  (mapcar #'closer-mop:slot-definition-name
+          (closer-mop:class-slots (class-of object))))
