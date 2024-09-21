@@ -13,7 +13,7 @@
    #+macosx
    (fmt "terminal-notifier -sound default -title '~A' -subtitle '~A' -message '~A' -activate org.gnu.Emacs" title subtitle message)
    #+linux
-   (fmt "notify-send -i gtk-dialog-info '~A'" message)))
+   (fmt "notify-send -i gtk-dialog-info '~A'" title)))
 
 (defm time-notify^@ (&rest args)
   "Time the evaluation of ARGS then display a notification after it has finished
