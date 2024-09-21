@@ -1,5 +1,5 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
-;;;; threads.lisp: utilities for dealing with threads
+;;;; threads.lisp --- utilities for dealing with threads
 
 (uiop:define-package #:meria/src/threads
   (:use #:cl

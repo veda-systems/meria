@@ -15,7 +15,8 @@
 
 This should be a real, T (always extend), or NIL (never extend).")
 
-(defm with-stack-extensions ((&key (limit '*stack-limit* limitp)
+(defm with-stack-extensions ((&key
+                                (limit '*stack-limit* limitp)
                                 (use-stack-limit nil))
                              &body forms)
   "Control stack extensions in LW.

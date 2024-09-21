@@ -1,5 +1,5 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
-;;;; config.lisp: configuration management
+;;;; config.lisp --- configuration management
 
 (uiop:define-package #:meria/src/config
   (:use #:cl
@@ -50,8 +50,8 @@
           (string (string-downcase base))
           (*standard-output* (make-broadcast-stream)))
      (mute
-      (reload-driver string)
-      (values))))
+       (reload-driver string)
+       (values))))
 
 
 ;;; config files
@@ -61,8 +61,8 @@
   (let ((base (uiop:merge-pathnames* (make-pathname :directory '(:relative ".config"))
                                      (user-homedir-pathname))))
     (flet ((fn (name base)
-             (uiop:merge-pathnames* (make-pathname :directory `(:relative ,name))
-                                    base)))
+               (uiop:merge-pathnames* (make-pathname :directory `(:relative ,name))
+                                      base)))
       (uiop:os-cond
        ((uiop:os-unix-p) (fn name base))
        (t (error "Oops, this function does not work on your system."))))))

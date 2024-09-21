@@ -1,5 +1,5 @@
 ;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
-;;;; server.lisp: server management
+;;;; server.lisp --- server management
 
 (uiop:define-package #:meria/src/server
   (:use #:cl
