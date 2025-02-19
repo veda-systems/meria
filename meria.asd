@@ -15,6 +15,7 @@
                  #:bordeaux-threads
                  #:closer-mop
                  #:cl-cpus
+                 #:ironclad
                  #:marie
                  #:meria/src/common
                  #:meria/src/config
