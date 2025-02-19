@@ -3,8 +3,8 @@
 
 (uiop:define-package #:meria/src/utilities
   (:use #:cl
-           #:marie
-           #:meria/src/common))
+        #:marie
+        #:meria/src/common))
 
 (in-package #:meria/src/utilities)
 
@@ -30,21 +30,13 @@ the evaluation."
 
 ;;; File processors
 
-(def get-base-dir (system-name)
-  "Get the base source directory for the given system."
-  (let* ((source-directory (asdf:system-source-directory
-                            (asdf:find-system system-name)))
-         (directory (uiop:merge-pathnames*
-                     (make-pathname :directory '(:relative "t"))
-                     source-directory)))
-    (when (uiop:directory-exists-p directory)
-      directory)))
-
 (def read-file (file-path &optional system-name)
   "Read contents from file at the given path.
    If system-name is provided, file-path is relative to that system's test directory."
   (let ((full-path (if system-name
-                       (uiop:merge-pathnames* file-path (get-base-dir system-name))
+                       (uiop:merge-pathnames*
+                        file-path
+                        (asdf:system-source-directory system-name))
                        file-path)))
     (when (pathnamep full-path)
       (uiop:read-file-string full-path))))
