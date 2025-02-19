@@ -26,12 +26,12 @@ the functions listed in the table for more details.
 | ~DEFSTRUCT~             | ~DEFS~  | ~s~    |
 
 * Common Utilities
-| FUNCTION                    | ARGS             | DESCRIPTION                                                                                   |
-|-----------------------------+------------------+-----------------------------------------------------------------------------------------------|
-| ~CURRENT-ISO-8601-DATE~ (f) | ~N/A~            | Returns the current date and time in ISO 8601 format.                                         |
-| ~CURRENT-CUSTOM-DATE~ (f)   | ~N/A~            | Returns the current date and time in a custom format, including microseconds and GMT offset.  |
-| ~DEBUG-PRINT~ (f)           | ~TEXT~ ~STREAM~  | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time.                   |
-| ~DEBUG-PRINT*~ (f)          | ~TEXT~ ~STREAM~  | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time sans the new line. |
+| FUNCTION                    | ARGS            | DESCRIPTION                                                                                   |
+|-----------------------------+-----------------+-----------------------------------------------------------------------------------------------|
+| ~CURRENT-ISO-8601-DATE~ (f) | ~N/A~           | Returns the current date and time in ISO 8601 format.                                         |
+| ~CURRENT-CUSTOM-DATE~ (f)   | ~N/A~           | Returns the current date and time in a custom format, including microseconds and GMT offset.  |
+| ~DEBUG-PRINT~ (f)           | ~TEXT~ ~STREAM~ | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time.                   |
+| ~DEBUG-PRINT*~ (f)          | ~TEXT~ ~STREAM~ | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time sans the new line. |
 
 * OS Utilities
 | FUNCTION                    | ARGS   | DESCRIPTION                                                     |
@@ -42,8 +42,8 @@ the functions listed in the table for more details.
 
 | FUNCTION                    | ARGS                              | DESCRIPTION                                                                                                            |
 |-----------------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------|
-| ~*STACK-LIMIT*~ (v)         | ~CURRENT-STACK-LENGTH~             | Limits how big the stack is allowed to get by default. This should be a real, T (always extend), or NIL (never extend) |
-| ~WITH-STACK-EXTENSIONS~ (m)  | ~LIMIT~ ~USE-STACK-LIMIT~ ~FORMS~ | Controls stack extensions in LispWorks, applying a stack limit if specified.                                           |
+| ~*STACK-LIMIT*~ (v)         | ~CURRENT-STACK-LENGTH~            | Limits how big the stack is allowed to get by default. This should be a real, T (always extend), or NIL (never extend) |
+| ~WITH-STACK-EXTENSIONS~ (m) | ~LIMIT~ ~USE-STACK-LIMIT~ ~FORMS~ | Controls stack extensions in LispWorks, applying a stack limit if specified.                                           |
 
 * Config Utilities
 
@@ -53,7 +53,7 @@ the functions listed in the table for more details.
 | ~CONFIG-FILE~ (f)          | ~NAME~         | Accept ~NAME~ as argument and returns the location of the config file of NAME on the disk.         |
 | ~CONFIG-FILE-EXISTS-P~ (f) | ~NAME~         | Accept ~NAME~ as argument and returns true if the config file exists.                              |
 | ~READ-CONFIG-FILE~ (f)     | ~NAME~         | Accept ~NAME~ as argument and reads the configuration file.                                        |
-| ~*DEFAULT-CONFIG*~         | ~N/A~          | Return the default configuration 127.0.0.1                                                         |
+| ~*DEFAULT-CONFIG*~         | ~N/A~          | Return the default configuration port '127.0.0.1'                                                  |
 | ~READ-CONFIG~ (f)          | ~NAME~         | Accept ~NAME~ as argument and returns the most proximate configuration.                            |
 | ~CONFIG-VALUE~ (f)         | ~NAME~ ~INDEX~ | Accept ~NAME~ as argument and returns the value associated with an ~INDEX~ in the config.          |
 
@@ -61,7 +61,7 @@ the functions listed in the table for more details.
 
 | FUNCTION          | ARGS                    | DESCRIPTION                                                    |
 |-------------------+-------------------------+----------------------------------------------------------------|
-| ~START-HTTPD~ (f) | ~NAME~ ~PORT~ ~ADDRESS~ | Starts an HTTP ~SERVER~ on the specified ~ADDRESS~ and ~PORT.~ |
+| ~START-HTTPD~ (f) | ~NAME~ ~PORT~ ~ADDRESS~ | Starts an HTTP ~SERVER~ on the specified ~ADDRESS~ and ~PORT~. |
 | ~STOP-HTTPD~ (f)  | ~SERVER~                | Stops the HTTP ~SERVER~.                                       |
 
 * Threads Utilities
