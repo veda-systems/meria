@@ -1,0 +1,23 @@
+#+TITLE: Meria
+
+* Overview
+This is a small collection of Common Lisp utilities.
+
+* Usage
+Clone this repo to =~/common-lisp=:
+
+#+BEGIN_SRC sh
+$ mkdir -p ~/common-lisp
+$ git clone https://github.com/krei-systems/meria
+#+END_SRC
+
+You can then load it with [[https://quicklisp.org][Quicklisp]]:
+
+#+BEGIN_SRC lisp
+(ql:quickload :meria)
+#+END_SRC
+
+To print the symbols exported by Meria:
+#+BEGIN_SRC lisp
+(marie:symbols :meria)
+#+END_SRC
