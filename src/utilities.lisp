@@ -3,7 +3,8 @@
 
 (uiop:define-package #:meria/src/utilities
   (:use #:cl
-        #:marie))
+        #:marie
+        #:meria/src/common))
 
 (in-package #:meria/src/utilities)
 
@@ -29,33 +30,21 @@ the evaluation."
 
 ;;; File processors
 
-(def dir ()
-  "Path from file disk"
-  (let* ((source-directory (asdf:system-source-directory
-                            (asdf:find-system "vera")))
-         (directory (uiop:merge-pathnames*
-                     (make-pathname :directory '(:relative "t"))
-                     source-directory)))
-    (when (uiop:directory-exists-p directory)
-      directory)))
-
-(def read-file (file-path)
-  "Reading the path from file disk."
-  (let ((full-path (uiop:merge-pathnames* file-path (dir))))
-    (when (pathnamep file-path)
+(def read-file (file-path &optional system-name)
+  "Read contents from file at the given path.
+   If system-name is provided, file-path is relative to that system's test directory."
+  (let ((full-path (if system-name
+                       (uiop:merge-pathnames*
+                        file-path
+                        (asdf:system-source-directory system-name))
+                       file-path)))
+    (when (pathnamep full-path)
       (uiop:read-file-string full-path))))
-
-(def vera-date ()
-  "Return the current date and time in custom format."
-  (local-time:format-timestring nil (local-time:now)
-                                :format `((:year 4) (:month 2) (:day 2) (:hour 2)
-                                                    (:min 2) (:sec 2) (:usec 6))))
 
 (def unique-ids (path)
   "Return unique ID for path."
   (when (pathnamep path)
-    (cat (vera-date)
+    (cat (current-custom-date)
          (ironclad:byte-array-to-hex-string
           (ironclad:digest-sequence
            :md5 (ironclad:ascii-string-to-byte-array (namestring path)))))))
-
