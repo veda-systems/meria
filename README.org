@@ -1,7 +1,7 @@
 #+TITLE: Meria
 
 * Overview
-This is a small collection of Common Lisp utilities, Meria is a twin of marie.
+This is a small collection of Common Lisp utilities, Meria is a twin of marie, composed of various modules and utilities such as date-time handling, debugging, and OS utilities to configuration management, server handling, thread management, and custom notification systems. Each utility is built to improve efficiency and usability for developers working in Lisp environments.
 
 * Components
 Each section or component is designed to simplify and accelerate development
