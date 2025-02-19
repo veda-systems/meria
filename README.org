@@ -1,7 +1,70 @@
 #+TITLE: Meria
 
 * Overview
-This is a small collection of Common Lisp utilities.
+This is a small collection of Common Lisp utilities, Meria is a twin of marie.
+
+* Components
+Each section or component is designed to simplify and accelerate development
+that can be selectively used depending on the task at hand. You can explore all
+the functions listed in the table for more details.
+
+* Common Utilities
+| FUNCTION                    | ARGS             | DESCRIPTION                                                                                   |
+|-----------------------------+------------------+-----------------------------------------------------------------------------------------------|
+| ~CURRENT-ISO-8601-DATE~ (f) | ~N/A~            | Returns the current date and time in ISO 8601 format.                                         |
+| ~CURRENT-CUSTOM-DATE~ (f)   | ~N/A~            | Returns the current date and time in a custom format, including microseconds and GMT offset.  |
+| ~DEBUG-PRINT~ (f)           | ~TEXT~ ~STREAM~  | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time.                   |
+| ~DEBUG-PRINT*~ (f)          | ~TEXT~ ~STREAM~  | Display ~TEXT~ to ~STREAM~ prefixing it with the the current date and time sans the new line. |
+
+* OS Utilities
+| FUNCTION                    | ARGS   | DESCRIPTION                                                     |
+|-----------------------------+--------+-----------------------------------------------------------------|
+| ~NUMBER-OF-PROCESSORS~ (f)  | ~N/A~  | Returns the number of processors available, platform-dependent. |
+
+* Stack Utilities
+
+| FUNCTION                    | ARGS                              | DESCRIPTION                                                                                                            |
+|-----------------------------+-----------------------------------+------------------------------------------------------------------------------------------------------------------------|
+| ~*STACK-LIMIT*~ (v)         | ~CURRENT-STACK-LENGTH~             | Limits how big the stack is allowed to get by default. This should be a real, T (always extend), or NIL (never extend) |
+| ~WITH-STACK-EXTENSIONS~ (m)  | ~LIMIT~ ~USE-STACK-LIMIT~ ~FORMS~ | Controls stack extensions in LispWorks, applying a stack limit if specified.                                           |
+
+* Config Utilities
+
+| FUNCTION                   | ARGS           | DESCRIPTION                                                                                        |
+|----------------------------+----------------+----------------------------------------------------------------------------------------------------|
+| ~CONFIG-DIRECTORY~ (f)     | ~NAME~         | Accept ~NAME~ as argument and returns the path to the default configuration and storage directory. |
+| ~CONFIG-FILE~ (f)          | ~NAME~         | Accept ~NAME~ as argument and returns the location of the config file of NAME on the disk.         |
+| ~CONFIG-FILE-EXISTS-P~ (f) | ~NAME~         | Accept ~NAME~ as argument and returns true if the config file exists.                              |
+| ~READ-CONFIG-FILE~ (f)     | ~NAME~         | Accept ~NAME~ as argument and reads the configuration file.                                        |
+| ~*DEFAULT-CONFIG*~         | ~N/A~          | Return the default configuration 127.0.0.1                                                         |
+| ~READ-CONFIG~ (f)          | ~NAME~         | Accept ~NAME~ as argument and returns the most proximate configuration.                            |
+| ~CONFIG-VALUE~ (f)         | ~NAME~ ~INDEX~ | Accept ~NAME~ as argument and returns the value associated with an ~INDEX~ in the config.          |
+
+* Server Utilities
+
+| FUNCTION          | ARGS                    | DESCRIPTION                                                    |
+|-------------------+-------------------------+----------------------------------------------------------------|
+| ~START-HTTPD~ (f) | ~NAME~ ~PORT~ ~ADDRESS~ | Starts an HTTP ~SERVER~ on the specified ~ADDRESS~ and ~PORT.~ |
+| ~STOP-HTTPD~ (f)  | ~SERVER~                | Stops the HTTP ~SERVER~.                                       |
+
+* Threads Utilities
+
+| FUNCTION                    | ARGS    | DESCRIPTION                                        |
+|-----------------------------+---------+----------------------------------------------------|
+| ~ShOW-THREADS~ (f)          | ~NONE~  | Prints a list of running threads.                  |
+| ~ShOW-THREADS-NAMES~ (f)    | ~NONE~  | Prints a list of the names of the running threads. |
+| ~FIND-THREADS~ (f)          | ~QUERY~ | Finds threads matching the ~QUERY~.                |
+| ~DESTORY-ThREADS~ (f)       | ~QUERY~ | Destroys threads matching the ~QUERY~.             |
+| ~DESTROY-OThER-ThREADS~ (f) | ~QUERY~ | Destroys threads not matching the ~QUERY~.         |
+
+* Utilities
+| FUNCTION             | ARGS                         | DESCRIPTION                                                                               |
+|----------------------+------------------------------+-------------------------------------------------------------------------------------------|
+| ~NOTIFY~ (f)         | ~TITLE~ ~SUBTITLE~ ~MESSAGE~ | Displays a system notification.                                                           |
+| ~TIME-NOTIFIY^@~ (m) | ~ARGS~                       | Times the evaluation of ~ARGS~ and displays a notification after evaluation.              |
+| ~SLOTS~ (f)          | ~OBJECT~                     | Returns the slot names of the ~OBJECT.~                                                   |
+| ~READ-FILE~ (f)      | ~FILE-PATH~  ~SYSTEM-NAME~   | Reads contents from a file at the given path.                                             |
+| ~UNIQUE-IDS~ (f)     | ~PATH~                       | Returns a unique ID for the ~PATH~ based on the current date and an MD5 hash of the path. |
 
 * Usage
 Clone this repo to =~/common-lisp=:
