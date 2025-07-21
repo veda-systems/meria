@@ -1,4 +1,4 @@
-;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
+;;;; -*- mode: lisp; syntax: common-lisp; base: 10 -*-
 ;;;; meria.asd --- main ASDF file for the meria system
 
 (defsystem #:meria
