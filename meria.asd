@@ -1,10 +1,10 @@
-;;;; -*- mode: lisp; syntax: common-lisp; base: 10; coding: utf-8-unix; external-format: (:utf-8 :eol-style :lf); -*-
+;;;; -*- mode: lisp; syntax: common-lisp; base: 10 -*-
 ;;;; meria.asd --- main ASDF file for the meria system
 
 (defsystem #:meria
     :name "meria"
     :version (:read-file-form #P"version.lisp")
-    :description "A small collection of CL utilities with external dependencies"
+    :description "A tiny collection of CL utilities with external dependencies"
     :author "Rommel Martínez <ebzzry@icloud.com>"
     :class :package-inferred-system
     :depends-on (#:local-time
